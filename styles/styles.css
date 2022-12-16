@@ -339,7 +339,7 @@ h6 {
     }
 
     .welcom_title_main_word {
-        font-size: 400%;
+        font-size: 150%;
     }
 
     .welcom_title_other_words {
@@ -349,7 +349,7 @@ h6 {
 
 @media screen and (max-width: 507px) {
     .welcom_title_main_word {
-        font-size: 300%;
+        font-size: 150%;
     }
 
     .welcom_title_other_words {
