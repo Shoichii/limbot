@@ -1,3 +1,20 @@
+// open popup
+
+const orderBot = document.querySelectorAll('.order_bot')
+const popupWrapper = document.querySelector('.popup-wrapper')
+
+orderBot.forEach(item => {
+    item.addEventListener('click', () => {
+        console.log('test')
+        popupWrapper.style.display = 'block'
+    })
+})
+
+popupWrapper.addEventListener('click', () => {
+    console.log('test2')
+    popupWrapper.style.display = 'none'
+})
+
 // JustValidate
 
 const validate = new window.JustValidate('#form');
