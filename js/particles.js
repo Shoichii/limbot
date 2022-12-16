@@ -1475,6 +1475,10 @@ function isInArray(value, array) {
 window.pJSDom = [];
 
 window.particlesJS = function (tag_id, params) {
+    
+    if(document.documentElement.clientWidth <= 850) {
+        return
+    }
 
     //console.log(params);
 

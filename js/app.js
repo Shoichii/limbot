@@ -112,6 +112,7 @@ let particles = document.getElementById('particles-js')
 let wrapper = document.querySelector('.wrapper')
 particles.style.height = `${wrapper.offsetHeight}px`
 
+
 window.addEventListener('resize', () => {
     particles.style.height = `${wrapper.offsetHeight}px`
 })
@@ -120,6 +121,7 @@ window.addEventListener('submit', () => {
     particles.style.height = `${wrapper.offsetHeight}px`
     fieldHide[0].style.display = "none";
     fieldHide[1].style.display = "none";
+
 })
 
 particlesJS('particles-js', {
@@ -232,6 +234,5 @@ particlesJS('particles-js', {
     },
     "retina_detect": true
 });
-
 
 
