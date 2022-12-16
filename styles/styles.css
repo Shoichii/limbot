@@ -118,6 +118,7 @@ h6 {
 .title-style {
     font-size: 300%;
     text-align: center;
+    text-shadow: 1px 1px 2px black;
 }
 
 .text-style {
@@ -275,11 +276,13 @@ h6 {
 
 .welcom_title_main_word {
     font-size: 250%;
+    text-shadow: 1px 1px 2px black;
 
 }
 
 .welcom_title_other_words {
     font-size: 250%;
+    text-shadow: 1px 1px 2px black;
 }
 
 .welcome_button {
@@ -297,7 +300,7 @@ h6 {
     width: 330px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     font-size: 150%;
     border-radius: 100px;
     box-shadow: 0 0 40px rgb(49, 109, 249);
@@ -372,7 +375,7 @@ h6 {
 @media screen and (max-width: 410px) {
     .order_bot {
         padding: 20px 00px;
-        width: 230px;
+        width: 200px;
         font-size: 90%;
         margin: 0 auto;
         display: block;
@@ -552,6 +555,12 @@ h6 {
     max-width: 352px;
     margin: 0 auto;
     margin-top: 130px;
+}
+
+@media screen and (max-width: 450px) {
+    .what-bots_points {
+        flex-direction: column;
+    }
 }
 
 /* SEVENTH BLOCK WHAT TECHNLOGOIES */
