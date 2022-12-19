@@ -2,17 +2,20 @@
 
 const orderBot = document.querySelectorAll('.order_bot')
 const popupWrapper = document.querySelector('.popup-wrapper')
+const closeWindow = document.querySelector('.popup_close_img')
 
 orderBot.forEach(item => {
     item.addEventListener('click', () => {
-        console.log('test')
-        popupWrapper.style.display = 'block'
+        popupWrapper.classList.add('popup-close')
     })
 })
 
 popupWrapper.addEventListener('click', () => {
-    console.log('test2')
-    popupWrapper.style.display = 'none'
+    popupWrapper.classList.remove('popup-close')
+})
+
+closeWindow.addEventListener('click', () => {
+    popupWrapper.classList.remove('popup-close')
 })
 
 // JustValidate
