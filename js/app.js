@@ -274,7 +274,7 @@ window.addEventListener('resize', () => {
 
 const form1 = document.getElementById('form_1');
 const form2 = document.getElementById('form_2');
-const TOKEN = '5716453718:AAEjkWlHfTzCq9liTM-yrdncG3iHlyT7MOc'
+const TOKEN = ''
 const CHAT_ID = '-1001812790757'
 const URI = `https://api.telegram.org/bot${TOKEN}/sendMessage`
 let message = '';
