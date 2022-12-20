@@ -2,6 +2,7 @@
 
 const orderBot = document.querySelectorAll('.order_bot')
 const popupWrapper = document.querySelector('.popup-wrapper')
+const popup = document.querySelector('.popup')
 const closeWindow = document.querySelector('.popup_close_img')
 
 orderBot.forEach(item => {
@@ -14,47 +15,64 @@ popupWrapper.addEventListener('click', () => {
     popupWrapper.classList.remove('popup-close')
 })
 
+popup.addEventListener('click', e => {
+    e.stopPropagation();
+})
+
 closeWindow.addEventListener('click', () => {
     popupWrapper.classList.remove('popup-close')
 })
 
 // JustValidate
 
-const validate = new window.JustValidate('#form');
+const validate = new window.JustValidate('#form_1');
+const validate2 = new window.JustValidate('#form_2');
 
 const fieldHide = document.querySelectorAll('.field-hide')
 const fields = document.querySelectorAll('.answers_second_field')
 
-const userName = document.querySelector('#name');
-const email = document.querySelector('#email');
-const tel = document.querySelector('#tel');
+const userName1 = document.querySelector('#name_1');
+const email1 = document.querySelector('#email_1');
+const tel1 = document.querySelector('#tel_1');
 
 const errorDiv = document.createElement('div');
 errorDiv.style.color = 'rgb(184, 17, 17)';
 errorDiv.classList.add('just-validate-error-label');
 errorDiv.textContent = 'Поле не заполнено!';
+const phoneRegex = /\+7\(\d{3}\)\d{3}\-\d{2}\-\d{2}/
 
 validate
-    .addField('#name', [
+    .addField('#name_1', [
         {
             rule: 'required',
             errorMessage: 'Поле не заполнено!',
         },
     ])
-    .addField('#email', [
+    .addField('#email_1', [
         {
             rule: 'required',
             errorMessage: 'Поле не заполнено!',
         },
         {
             rule: 'email',
-            errorMessage: 'Email is invalid!',
+            errorMessage: 'Email введён неверно!',
         },
+    ])
+    .addField('#tel_1', [
+        {
+            rule: 'required',
+            errorMessage: 'Поле не заполнено!',
+        },
+        {
+            rule: 'customRegexp',
+            value: phoneRegex,
+            errorMessage: 'Поле не заполнено!'
+        }
     ]);
 
-userName.addEventListener('mouseover', e => {
+userName1.addEventListener('mouseover', e => {
     if (e.target.value == '') {
-        userName.classList.add('just-validate-error-field')
+        userName1.classList.add('just-validate-error-field')
         fieldHide[0].style.display = "block";
         const children = fields[0].children
         if (children.length >= 4) {
@@ -63,9 +81,9 @@ userName.addEventListener('mouseover', e => {
     }
 })
 
-email.addEventListener('mouseover', e => {
+email1.addEventListener('mouseover', e => {
     if (e.target.value == '') {
-        email.classList.add('just-validate-error-field')
+        email1.classList.add('just-validate-error-field')
         fieldHide[1].style.display = "block";
         const children = fields[1].children
         if (children.length >= 4) {
@@ -75,35 +93,39 @@ email.addEventListener('mouseover', e => {
 
 })
 
-tel.addEventListener('mouseover', e => {
+tel1.addEventListener('mouseover', e => {
     if (e.target.value == '+7(___)___-__-__') {
-        tel.classList.add('just-validate-error-field')
+        tel1.classList.add('just-validate-error-field')
         fieldHide[2].style.display = "block";
+        const children = fields[2].children
+        if (children.length >= 4) {
+            fieldHide[2].style.display = "none";
+        }
     }
 })
 
-userName.addEventListener('input', e => {
+userName1.addEventListener('input', e => {
     if (e.target.value != '') {
-        userName.classList.remove('just-validate-error-field')
+        userName1.classList.remove('just-validate-error-field')
         fieldHide[0].style.display = "none";
     } else if (e.target.value == '') {
         const children = fields[0].children
         if (children.length <= 3) {
-            userName.classList.add('just-validate-error-field')
+            userName1.classList.add('just-validate-error-field')
             fieldHide[0].style.display = "block";
         }
 
     }
 })
 
-email.addEventListener('input', e => {
+email1.addEventListener('input', e => {
     if (e.target.value != '') {
-        email.classList.remove('just-validate-error-field')
+        email1.classList.remove('just-validate-error-field')
         fieldHide[1].style.display = "none";
     } else if (e.target.value == '') {
         const children = fields[1].children
         if (children.length <= 3) {
-            email.classList.add('just-validate-error-field')
+            email1.classList.add('just-validate-error-field')
             fieldHide[1].style.display = "block";
         }
     }
@@ -113,15 +135,126 @@ let maskOptions = {
     mask: '+7(000)000-00-00',
     lazy: false
 }
-let mask = new IMask(tel, maskOptions);
-
-tel.addEventListener('input', e => {
-    if (e.target.value != '+7(___)___-__-__') {
-        tel.classList.remove('just-validate-error-field')
+let mask = new IMask(tel1, maskOptions);
+let wasSubmit1 = false
+tel1.addEventListener('input', e => {
+    if (e.target.value.match(phoneRegex)) {
+        tel1.classList.remove('just-validate-error-field')
         fieldHide[2].style.display = "none";
-    } else if (e.target.value == '+7(___)___-__-__') {
-        tel.classList.add('just-validate-error-field')
+    } else if (!e.target.value.match(phoneRegex) && !wasSubmit1) {
+        tel1.classList.add('just-validate-error-field')
         fieldHide[2].style.display = "block";
+    }
+})
+
+
+const userName2 = document.querySelector('#name_2');
+const email2 = document.querySelector('#email_2');
+const tel2 = document.querySelector('#tel_2');
+
+validate2
+    .addField('#name_2', [
+        {
+            rule: 'required',
+            errorMessage: 'Поле не заполнено!',
+        },
+    ])
+    .addField('#email_2', [
+        {
+            rule: 'required',
+            errorMessage: 'Поле не заполнено!',
+        },
+        {
+            rule: 'email',
+            errorMessage: 'Email введён неверно!',
+        },
+    ])
+    .addField('#tel_2', [
+        {
+            rule: 'required',
+            errorMessage: 'Поле не заполнено!',
+        },
+        {
+            rule: 'customRegexp',
+            value: phoneRegex,
+            errorMessage: 'Поле не заполнено!'
+        }
+    ]);
+
+userName2.addEventListener('mouseover', e => {
+    if (e.target.value == '') {
+        userName2.classList.add('just-validate-error-field')
+        fieldHide[3].style.display = "block";
+        const children = fields[4].children
+        if (children.length >= 4) {
+            fieldHide[3].style.display = "none";
+        }
+    }
+})
+
+email2.addEventListener('mouseover', e => {
+    if (e.target.value == '') {
+        email2.classList.add('just-validate-error-field')
+        fieldHide[4].style.display = "block";
+        const children = fields[5].children
+        if (children.length >= 4) {
+            fieldHide[4].style.display = "none";
+        }
+    }
+
+})
+
+tel2.addEventListener('mouseover', e => {
+    if (e.target.value == '+7(___)___-__-__') {
+        tel2.classList.add('just-validate-error-field')
+        fieldHide[5].style.display = "block";
+        const children = fields[6].children
+        if (children.length >= 4) {
+            fieldHide[5].style.display = "none";
+        }
+    }
+})
+
+userName2.addEventListener('input', e => {
+    if (e.target.value != '') {
+        userName2.classList.remove('just-validate-error-field')
+        fieldHide[3].style.display = "none";
+    } else if (e.target.value == '') {
+        const children = fields[4].children
+        if (children.length <= 3) {
+            userName2.classList.add('just-validate-error-field')
+            fieldHide[3].style.display = "block";
+        }
+
+    }
+})
+
+email2.addEventListener('input', e => {
+    if (e.target.value != '') {
+        email2.classList.remove('just-validate-error-field')
+        fieldHide[4].style.display = "none";
+    } else if (e.target.value == '') {
+        const children = fields[5].children
+        if (children.length <= 3) {
+            email2.classList.add('just-validate-error-field')
+            fieldHide[4].style.display = "block";
+        }
+    }
+})
+
+let maskOptions2 = {
+    mask: '+7(000)000-00-00',
+    lazy: false
+}
+let mask2 = new IMask(tel2, maskOptions);
+let wasSubmit2 = false
+tel2.addEventListener('input', e => {
+    if (e.target.value.match(phoneRegex)) {
+        tel2.classList.remove('just-validate-error-field')
+        fieldHide[5].style.display = "none";
+    } else if (!e.target.value.match(phoneRegex) && !wasSubmit2) {
+        tel2.classList.add('just-validate-error-field')
+        fieldHide[5].style.display = "block";
     }
 })
 
@@ -137,11 +270,88 @@ window.addEventListener('resize', () => {
     particles.style.height = `${wrapper.offsetHeight}px`
 })
 
-window.addEventListener('submit', () => {
+// Отправка формы
+
+const form1 = document.getElementById('form_1');
+const form2 = document.getElementById('form_2');
+const TOKEN = '5716453718:AAEjkWlHfTzCq9liTM-yrdncG3iHlyT7MOc'
+const CHAT_ID = '-1001812790757'
+const URI = `https://api.telegram.org/bot${TOKEN}/sendMessage`
+let message = '';
+
+form1.addEventListener('submit', function (e) {
+    e.preventDefault()
     particles.style.height = `${wrapper.offsetHeight}px`
     fieldHide[0].style.display = "none";
     fieldHide[1].style.display = "none";
+    fieldHide[2].style.display = "none";
+    wasSubmit1 = true
+    message = `<b>Имя</b>: ${this.name_1.value}\n`
+    message += `<b>Почта</b>: ${this.email_1.value}\n`
+    message += `<b>Телефон</b>: ${this.tel_1.value}\n`
+    message += `<b>Комментарий</b>: ${this.comment_1.value}\n`
+    let closePopup = fields[0].children.length != 4 &&
+        fields[1].children.length != 4 &&
+        fields[2].children.length != 4
 
+    if (closePopup) {
+        fetch(URI, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                parse_mode: 'html',
+                text: message
+            })
+        }).then(res => {
+            this.name_1.value = ''
+            this.email_1.value = ''
+            this.tel_1.value = ''
+            this.comment_1.value = ''
+        })
+        popupWrapper.classList.remove('popup-close')
+    }
+
+
+})
+
+form2.addEventListener('submit', function (e) {
+    e.preventDefault()
+    particles.style.height = `${wrapper.offsetHeight}px`
+    fieldHide[3].style.display = "none";
+    fieldHide[4].style.display = "none";
+    fieldHide[5].style.display = "none";
+    wasSubmit2 = true
+    message = `<b>Имя</b>: ${this.name_2.value}\n`
+    message += `<b>Почта</b>: ${this.email_2.value}\n`
+    message += `<b>Телефон</b>: ${this.tel_2.value}\n`
+    message += `<b>Промокод</b>: ${this.promo.value}\n`
+    message += `<b>Комментарий</b>: ${this.comment_2.value}\n`
+    let closePopup = fields[4].children.length != 4 &&
+        fields[5].children.length != 4 &&
+        fields[6].children.length != 4
+
+    if (closePopup) {
+        fetch(URI, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                parse_mode: 'html',
+                text: message
+            })
+        }).then(res => {
+            this.name_2.value = ''
+            this.email_2.value = ''
+            this.tel_2.value = ''
+            this.promo.value = ''
+            this.comment_2.value = ''
+        })
+    }
 })
 
 particlesJS('particles-js', {

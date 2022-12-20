@@ -976,6 +976,49 @@ h6 {
     margin: 0;
 }
 
+.submit {
+    margin: 0 auto;
+    background: rgb(49, 109, 249);
+    border: none;
+    color: white;
+    padding: 20px 0px;
+    width: 330px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 150%;
+    border-radius: 100px;
+    box-shadow: 0 0 40px rgb(49, 109, 249);
+    background-position: right;
+    transition: 0.5s all;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit::after {
+    content: "";
+    width: 450px;
+    height: 80px;
+    background: rgb(49, 109, 249);
+    background: linear-gradient(180deg, rgba(49, 109, 249, 0.4) 0%, rgba(255, 255, 255, 0.4) 32%, rgba(255, 255, 255, 0.6578176802947742) 52%, rgba(251, 251, 251, 0.4) 71%, rgba(49, 109, 249, 0.4) 100%);
+    position: absolute;
+    transform: rotate(45deg);
+    left: 90%;
+    top: 50%;
+}
+
+.submit:hover:after {
+    content: "";
+    left: -150%;
+    top: 30%;
+    transition: 1.5s;
+}
+
+.submit:hover {
+    box-shadow: 0 0 10px rgb(49, 109, 249);
+    transition: 0.5s all;
+}
+
 @media screen and (max-width: 1030px) {
     .answers_second_top {
         flex-direction: column;
@@ -1066,6 +1109,14 @@ h6 {
         margin: 0;
         font-size: 80%;
         padding: 20px 10px;
+    }
+
+    .submit {
+        padding: 20px 00px;
+        width: 200px;
+        font-size: 90%;
+        margin: 0 auto;
+        display: block;
     }
 }
 
