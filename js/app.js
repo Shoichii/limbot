@@ -274,7 +274,7 @@ window.addEventListener('resize', () => {
 
 const form1 = document.getElementById('form_1');
 const form2 = document.getElementById('form_2');
-const TOKEN = ''
+const TOKEN = '5716453718:AAEjkWlHfTzCq9liTM-yrdncG3iHlyT7MOc'
 const CHAT_ID = '-1001812790757'
 const URI = `https://api.telegram.org/bot${TOKEN}/sendMessage`
 let message = '';
@@ -286,26 +286,23 @@ form1.addEventListener('submit', function (e) {
     fieldHide[1].style.display = "none";
     fieldHide[2].style.display = "none";
     wasSubmit1 = true
-    message = `<b>Имя</b>: ${this.name_1.value}\n`
-    message += `<b>Почта</b>: ${this.email_1.value}\n`
-    message += `<b>Телефон</b>: ${this.tel_1.value}\n`
-    message += `<b>Комментарий</b>: ${this.comment_1.value}\n`
     let closePopup = fields[0].children.length != 4 &&
         fields[1].children.length != 4 &&
         fields[2].children.length != 4
 
     if (closePopup) {
-        fetch(URI, {
+        fetch('../php/telegram.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify({
-                chat_id: CHAT_ID,
-                parse_mode: 'html',
-                text: message
+                name: this.name_1.value,
+                email: this.email_1.value,
+                tel: this.tel_1.value,
+                comment: this.comment_1.value
             })
-        }).then(res => {
+        }).then(() => {
             this.name_1.value = ''
             this.email_1.value = ''
             this.tel_1.value = ''
@@ -324,27 +321,25 @@ form2.addEventListener('submit', function (e) {
     fieldHide[4].style.display = "none";
     fieldHide[5].style.display = "none";
     wasSubmit2 = true
-    message = `<b>Имя</b>: ${this.name_2.value}\n`
-    message += `<b>Почта</b>: ${this.email_2.value}\n`
-    message += `<b>Телефон</b>: ${this.tel_2.value}\n`
-    message += `<b>Промокод</b>: ${this.promo.value}\n`
-    message += `<b>Комментарий</b>: ${this.comment_2.value}\n`
     let closePopup = fields[4].children.length != 4 &&
         fields[5].children.length != 4 &&
         fields[6].children.length != 4
 
     if (closePopup) {
-        fetch(URI, {
+        fetch('../php/telegram.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify({
-                chat_id: CHAT_ID,
-                parse_mode: 'html',
-                text: message
+                name: this.name_2.value,
+                email: this.email_2.value,
+                tel: this.tel_2.value,
+                promo: this.promo.value,
+                comment: this.comment_2.value
+
             })
-        }).then(res => {
+        }).then(() => {
             this.name_2.value = ''
             this.email_2.value = ''
             this.tel_2.value = ''
