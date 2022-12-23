@@ -921,6 +921,7 @@ h6 {
 .answers_first_button_name-subtitle {
     font-size: 110%;
     margin-bottom: 0px;
+    white-space: nowrap;
 }
 
 .answers_second {
