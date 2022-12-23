@@ -478,15 +478,29 @@ h6 {
 }
 
 .who-we_title {
+    display: flex;
+    justify-content: center;
+}
+
+.who-we_title p {
     text-align: center;
     font-size: 220%;
+    margin-left: 20px;
+    white-space: nowrap;
+}
+
+.who-we_title img {
+    display: block;
+    width: 10%;
+    height: 10%;
+    margin-top: 10px;
 }
 
 .who-we_text {
     margin-top: 30px;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1120px) {
     .who-we {
         flex-direction: column;
     }
@@ -494,6 +508,13 @@ h6 {
     .who-we_block {
         gap: 50px;
         max-width: 100%;
+    }
+
+    .who-we_title img {
+        display: block;
+        width: 4%;
+        height: 4%;
+        margin-top: 5px;
     }
 }
 
@@ -583,7 +604,7 @@ h6 {
     left: 50%;
     transform: translate(-50%);
     bottom: 0px;
-    width: 100%;
+    width: 105%;
     text-align: center;
 }
 
