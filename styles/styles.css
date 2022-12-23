@@ -128,6 +128,7 @@ h6 {
     flex-direction: column;
     padding: 30px;
     box-shadow: 0 0 30px rgb(0, 0, 0);
+    border-radius: 10px;
 }
 
 .popup_close {
@@ -171,9 +172,7 @@ h6 {
     transform: translate(-50%);
 }
 
-@media screen and (max-width: 850px) { 
-
-}
+@media screen and (max-width: 850px) {}
 
 /* COMMON */
 
@@ -491,8 +490,8 @@ h6 {
 
 .who-we_title img {
     display: block;
-    width: 10%;
-    height: 10%;
+    width: 35px;
+    height: 35px;
     margin-top: 10px;
 }
 
@@ -512,9 +511,9 @@ h6 {
 
     .who-we_title img {
         display: block;
-        width: 4%;
-        height: 4%;
-        margin-top: 5px;
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
     }
 }
 
@@ -523,9 +522,22 @@ h6 {
         margin-top: 150px;
     }
 
-    .who-we_title {
+    .who-we_title p {
         text-align: center;
         font-size: 190%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .who-we_title img {
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin-top: 0px;
+    }
+
+    .who-we_title p {
+        font-size: 140%;
     }
 }
 
