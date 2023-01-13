@@ -263,11 +263,12 @@ tel2.addEventListener('input', e => {
 
 let particles = document.getElementById('particles-js')
 let wrapper = document.querySelector('.wrapper')
-particles.style.height = `${wrapper.offsetHeight}px`
+console.log(wrapper.scrollHeight)
+particles.style.height = `${wrapper.scrollHeight}px`
 
 
 window.addEventListener('resize', () => {
-    particles.style.height = `${wrapper.offsetHeight}px`
+    particles.style.height = `${wrapper.scrollHeight}px`
 })
 
 // Отправка формы
